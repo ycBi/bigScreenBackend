@@ -27,4 +27,10 @@ public class UserController{
         String token= TokenUtil.sign(new User(username,password));
         return Result.buildSuccessData(token,"post success");
     }
+
+    @GetMapping("/getRouteList")
+    public Result getRouteList(){
+        String routeList = "[{path: '/permission',component: 'Layout',redirect: '/permission/page',alwaysShow: true,name: 'Permission',meta: {title: '大屏展示',icon: 'lock',roles: ['admin', 'editor']},children: [{path: 'page',component: '() => import('@/views/permission/role')',name: 'PagePermission',meta: {title: '一号大厅展示',src: 'http://localhost:50401/analysis/dashboard/show/03590db461799c1f107b/',roles: ['admin']}},{path: 'directive',component: '() => import('@/views/permission/role')',name: 'DirectivePermission',meta: {title: '二号大厅展示',src: 'http://localhost:50401/analysis/dashboard/show/05cd39547179a1a1b489/'}},{path: 'role',component: '() => import('@/views/permission/role')',name: 'RolePermission',meta: {title: '三号大厅展示',src: 'http://localhost:50401/analysis/dashboard/show/09d756e23179a12580fb/',roles: ['admin']}}, {path: 'firstHall',component: '() => import('@/views/permission/role')',name: 'carousel',meta: {src: 'http://localhost:50401/analysis/dashboard/show/03590db461799c1f107b/',title: '四号大厅展示',roles: ['admin']}}]},{ path: '*', redirect: '/404', hidden: true }]";
+        return Result.buildSuccessData(routeList);
+    }
 }
