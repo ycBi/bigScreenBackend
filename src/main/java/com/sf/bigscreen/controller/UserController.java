@@ -6,9 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sf.bigscreen.entity.Result;
 import com.sf.bigscreen.model.User;
 import com.sf.bigscreen.utils.TokenUtil;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,6 +29,14 @@ public class UserController{
         String password=(String)para.get("password");
         String token= TokenUtil.sign(new User(username,password));
         return Result.buildSuccessData(token,"post success");
+    }
+
+    @ApiModelProperty(value = "拿到用户的基本信息")
+    @GetMapping("/getUserInfo")
+    public Result getUserInfo(){
+        List<String> strings = new ArrayList<>();
+        strings.add("admin");
+        return Result.buildSuccessData(strings);
     }
 
     @GetMapping("/getRouteList")

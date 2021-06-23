@@ -5,7 +5,7 @@ spring:
     name: bigScreen
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.7.151:3306/enplatform_3_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.7.151:3306/datascreen?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
     username: root
     password: sa123456
 #    type: com.alibaba.druid.pool.DruidDataSource
