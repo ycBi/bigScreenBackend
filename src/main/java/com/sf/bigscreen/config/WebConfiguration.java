@@ -42,7 +42,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 //        excludePath.add("/user/register");  //登录
         excludePath.add("/user/login");     //注册
         excludePath.add("/user/getRouteList");
-        excludePath.add("/user/getUserInfo");
+//        excludePath.add("/user/getUserInfo");
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
 
@@ -62,7 +62,8 @@ public class WebConfiguration implements WebMvcConfigurer {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")     //允许的路径
                         .allowedMethods("*")     //允许的方法
-                        .allowedOriginPatterns("*")       //允许的网站
+                        .allowedOrigins("*")
+//                        .allowedOriginPatterns("*")       //允许的网站
                         .allowedHeaders("*")     //允许的请求头
                         .allowCredentials(true)
                         .maxAge(3600);

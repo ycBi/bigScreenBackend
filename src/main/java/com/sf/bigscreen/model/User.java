@@ -26,6 +26,10 @@ public class User extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "密码")
     private String password;
 
+    @TableField(value = "role")
+    @ApiModelProperty(value = "角色权限")
+    private String role;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
