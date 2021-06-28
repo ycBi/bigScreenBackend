@@ -41,8 +41,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         //排除拦截，除了注册登录(此时还没token)，其他都拦截
 //        excludePath.add("/user/register");  //登录
         excludePath.add("/user/login");     //注册
-        excludePath.add("/user/getRouteList");
-//        excludePath.add("/user/getUserInfo");
+//        excludePath.add("/router/updateRoutes");
+        excludePath.add("/user/getUserInfo");
+//        excludePath.add("/router/getList");
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
 
@@ -62,8 +63,8 @@ public class WebConfiguration implements WebMvcConfigurer {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")     //允许的路径
                         .allowedMethods("*")     //允许的方法
-                        .allowedOrigins("*")
 //                        .allowedOriginPatterns("*")       //允许的网站
+                        .allowedOrigins("*")
                         .allowedHeaders("*")     //允许的请求头
                         .allowCredentials(true)
                         .maxAge(3600);

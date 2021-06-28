@@ -8,7 +8,7 @@ spring:
     url: jdbc:mysql://192.168.7.151:3306/datascreen?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
     username: root
     password: sa123456
-#    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
 #mybatis-plus:
 #  mapperLocations: classpath*:mybatis/*.xml,classpath*:com/sf/energy/nplatform/**/mapper/*.xml
 #  typeAliasesPackage: com.sf.energy.nplatform.model
@@ -24,7 +24,7 @@ spring:
 
 mybatis-plus:
   # Mapper.xml 文件位置 Maven 多模块项目的扫描路径需以 classpath*: 开头
-  mapperLocations: classpath:mapper/*Mapper.xml
+  mapperLocations:  classpath*:com/sf/bigscreen/mapper/xml/*.xml
   #  #MyBaits 别名包扫描路径，通过该属性可以给包中的类注册别名 实体扫描，多个package用逗号或者分号分隔
   #  typeAliasesPackage: com.sf.bigscreen.entity
   #  #通过父类（或实现接口）的方式来限定扫描实体
