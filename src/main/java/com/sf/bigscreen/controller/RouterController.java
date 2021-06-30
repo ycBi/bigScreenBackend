@@ -32,7 +32,7 @@ public class RouterController {
         return Result.buildFailedMessage("获取路由列表失败");
     }
 
-    @ApiModelProperty("修改路由表")
+    @ApiModelProperty("修改路由表(包括对路由的增加、删除、修改)")
     @PostMapping("/updateRoutes")
     public Result updateRouteList(@RequestBody Router routeInfo){
         System.out.println(routeInfo);

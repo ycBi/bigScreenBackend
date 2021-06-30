@@ -19,8 +19,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/user")
 public class UserController{
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    @ResponseBody
+
+    @PostMapping(value = "/login")
     public Result login(@RequestBody Map<String,Object> para) throws JsonProcessingException {
         String username=(String)para.get("username");
         String password=(String)para.get("password");
