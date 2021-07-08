@@ -64,3 +64,6 @@ mybatis-plus:
 #      logic-not-delete-value: 0
 #      #逻辑未删除值,(逻辑删除下有效)
 #      logic-delete-value: 1
+
+third:
+  url: http://192.168.7.219:9000

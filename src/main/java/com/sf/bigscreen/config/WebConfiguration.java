@@ -44,6 +44,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 //        excludePath.add("/router/updateRoutes");
 //        excludePath.add("/user/getUserInfo");
 //        excludePath.add("/router/getList");
+        excludePath.add("/dayAm/updateDayAm");
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
 
@@ -77,9 +78,10 @@ public class WebConfiguration implements WebMvcConfigurer {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:9527");
-        config.addAllowedOrigin("http://192.168.7.219:9527");
-        config.addAllowedOrigin("null");
+//        config.addAllowedOrigin("http://localhost:9527");
+//        config.addAllowedOrigin("http://192.168.7.219:9527");
+//        config.addAllowedOrigin("null");
+        config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config); // CORS 配置对所有接口都有效
