@@ -17,7 +17,7 @@ public class GetEnergyPlatformTokenUtil {
     @Value("${third.url}")
     private  String baseThirdUrl;
 
-    public  String getEnergyToken(){
+    public String getEnergyToken(){
         //拿到能源监管平台的access token
         StringBuilder builder1 = new StringBuilder(baseThirdUrl);
         String s1 = builder1.append("/plat/auth/oauth/token").toString();

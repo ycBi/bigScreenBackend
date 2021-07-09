@@ -66,7 +66,7 @@ public class DayAmSchedule implements SchedulingConfigurer {
         return new Runnable() {
             @Override
             public void run() {
-//                Integer integer = iDayAmService.addOrUpdateDayAmAllInfo();
+                Integer integer = iDayAmService.addOrUpdateDayAmAllInfo();
 //                System.out.println("111");
             }
         };
