@@ -24,6 +24,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -87,7 +88,7 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
             int insert = iDayAmMapper.insert(dayAm);
             return insert;
         } else {
-            if (!data.toString().equals("null") ) {
+            if (data!=null) {
                 dayAm.setZGross(Double.valueOf(dataJson.get("zgross").toString()));
                 dayAm.setWorkGross(Double.valueOf(dataJson.get("workData").toString()));
                 dayAm.setUnWorkGross(Double.valueOf(dataJson.get("unWorkData").toString()));
@@ -266,6 +267,10 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
         }
     }
 
+    /**
+     * 同步单只电表信息
+     * @return
+     */
     @Override
     public Integer addOrUpdateDayAmInfo() {
         String accessToken = getToken();
@@ -294,10 +299,10 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
                 int insert = iDayAmMapper.insert(dayAm);
                 return insert;
             }
-            dayAm.setZGross(Double.valueOf(dataJson.get("zgross").toString()));
+            dayAm.setZGross(Double.valueOf(dataJson.get("zGross").toString()));
             dayAm.setWorkGross(Double.valueOf(dataJson.get("workData").toString()));
             dayAm.setUnWorkGross(Double.valueOf(dataJson.get("unWorkData").toString()));
-            Integer working_day_type = Integer.parseInt(dataJson.get("working_day_type").toString());
+            Integer working_day_type = Integer.parseInt(dataJson.get("workingDayType").toString());
             dayAm.setWorkDay(working_day_type.equals(1));
             int insert = iDayAmMapper.insert(dayAm);
             return insert;
@@ -306,7 +311,7 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
                 dayAm.setZGross(Double.valueOf(dataJson.get("zgross").toString()));
                 dayAm.setWorkGross(Double.valueOf(dataJson.get("workData").toString()));
                 dayAm.setUnWorkGross(Double.valueOf(dataJson.get("unWorkData").toString()));
-                Integer working_day_type = Integer.parseInt(dataJson.get("working_day_type").toString());
+                Integer working_day_type = Integer.parseInt(dataJson.get("workingDayType").toString());
                 dayAm.setWorkDay(working_day_type.equals(1));
                 int update = iDayAmMapper.update(dayAm, new LambdaQueryWrapper<DayAm>().eq(DayAm::getTheDay, today));
                 return update;
@@ -454,8 +459,8 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
         String today = DateUtil.today();
         StringBuilder builder = new StringBuilder(thirdUrl);
         TableConfig tableConfig = iTableConfigMapper.selectOne(new LambdaQueryWrapper<TableConfig>().eq(TableConfig::getTableName, "dayam").eq(TableConfig::getInfoStyle, "Area"));
-        String url = builder.append("/plat/api/dayAm/getDayAmAllInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
-                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).toString();
+        String url = builder.append("/plat/api/dayAm/getDayAmAreaInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
+                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).append("&id=").append(tableConfig.getInfoIndex()).toString();
         String body = HttpRequest.get(url).header("Authorization", accessToken).execute().body();
         JSONObject jsonObject = JSONUtil.parseObj(body);
         Object data = jsonObject.get("data");
@@ -576,8 +581,8 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
         String today = DateUtil.today();
         StringBuilder builder = new StringBuilder(thirdUrl);
         TableConfig tableConfig = iTableConfigMapper.selectOne(new LambdaQueryWrapper<TableConfig>().eq(TableConfig::getTableName, "dayam").eq(TableConfig::getInfoStyle, "Part"));
-        String url = builder.append("/plat/api/dayAm/getDayAmAllInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
-                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).toString();
+        String url = builder.append("/plat/api/dayAm/getDayAmDepartmentInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
+                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).append("&id=").append(tableConfig.getInfoIndex()).toString();
         String body = HttpRequest.get(url).header("Authorization", accessToken).execute().body();
         JSONObject jsonObject = JSONUtil.parseObj(body);
         Object data = jsonObject.get("data");
@@ -698,8 +703,8 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
         String today = DateUtil.today();
         StringBuilder builder = new StringBuilder(thirdUrl);
         TableConfig tableConfig = iTableConfigMapper.selectOne(new LambdaQueryWrapper<TableConfig>().eq(TableConfig::getTableName, "dayam").eq(TableConfig::getInfoStyle, "Arc"));
-        String url = builder.append("/plat/api/dayAm/getDayAmAllInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
-                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).toString();
+        String url = builder.append("/plat/api/dayAm/getDayAmArcInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
+                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).append("&id=").append(tableConfig.getInfoIndex()).toString();
         String body = HttpRequest.get(url).header("Authorization", accessToken).execute().body();
         JSONObject jsonObject = JSONUtil.parseObj(body);
         Object data = jsonObject.get("data");
@@ -820,8 +825,8 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
         String today = DateUtil.today();
         StringBuilder builder = new StringBuilder(thirdUrl);
         TableConfig tableConfig = iTableConfigMapper.selectOne(new LambdaQueryWrapper<TableConfig>().eq(TableConfig::getTableName, "dayam").eq(TableConfig::getInfoStyle, "Meter"));
-        String url = builder.append("/plat/api/dayAm/getDayAmAllInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
-                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).toString();
+        String url = builder.append("/plat/api/dayAm/getDayAmInfoByTimeRange").append("?dateStart=").append(DateUtil.format(tableConfig.getStartDate(),"yyyy-MM-dd"))
+                .append("&dateEnd=").append(DateUtil.format(tableConfig.getEndDate(),"yyyy-MM-dd")).append("&id=").append(tableConfig.getInfoIndex()).toString();
         String body = HttpRequest.get(url).header("Authorization", accessToken).execute().body();
         JSONObject jsonObject = JSONUtil.parseObj(body);
         Object data = jsonObject.get("data");
@@ -867,10 +872,10 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
                             y.setInfoStyle(tableConfig.getInfoStyle());
                             y.setInfoIndex(tableConfig.getInfoIndex());
                             y.setInfoName(tableConfig.getInfoName());
-                            y.setZGross(Double.valueOf(jsonObject1.get("zgross").toString()));
+                            y.setZGross(Double.valueOf(jsonObject1.get("zGross").toString()));
                             y.setWorkGross(Double.valueOf(jsonObject1.get("workData").toString()));
                             y.setUnWorkGross(Double.valueOf(jsonObject1.get("unWorkData").toString()));
-                            Integer working_day_type = Integer.parseInt(jsonObject1.get("working_day_type").toString());
+                            Integer working_day_type = Integer.parseInt(jsonObject1.get("workingDayType").toString());
                             y.setWorkDay(working_day_type.equals(1));
                             result.set(iDayAmMapper.insert(y));
                             break;
@@ -910,10 +915,11 @@ public class DayAmServiceImpl extends ServiceImpl<IDayAmMapper, DayAm> implement
                             y.setInfoStyle(tableConfig.getInfoStyle());
                             y.setInfoIndex(tableConfig.getInfoIndex());
                             y.setInfoName(tableConfig.getInfoName());
-                            y.setZGross(Double.valueOf(jsonObject1.get("zgross").toString()));
+                            y.setZGross(Double.valueOf(jsonObject1.get("zGross").toString()));
                             y.setWorkGross(Double.valueOf(jsonObject1.get("workData").toString()));
                             y.setUnWorkGross(Double.valueOf(jsonObject1.get("unWorkData").toString()));
-                            Integer working_day_type = Integer.parseInt(jsonObject1.get("working_day_type").toString());
+                            //这里存在一个hutool的jsonUtil的bug，他会把json的null值解析为字符串null,即为"null"
+                            Integer working_day_type = Integer.parseInt((jsonObject1.get("workingDayType")==null||"null".equals(jsonObject1.get("workingDayType").toString()))?"1":jsonObject1.get("workingDayType").toString());
                             y.setWorkDay(working_day_type.equals(1));
                             int update = iDayAmMapper.update(y, new LambdaQueryWrapper<DayAm>().eq(DayAm::getTheDay, y.getTheDay()));
                             //update为0，说明该同步日期目标数据库不存在

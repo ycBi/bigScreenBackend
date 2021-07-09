@@ -6,9 +6,11 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.druid.util.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.sf.bigscreen.mapper.IDayAmMapper;
 import com.sf.bigscreen.mapper.ITableConfigMapper;
 import com.sf.bigscreen.model.DayAm;
+import com.sf.bigscreen.model.TableConfig;
 import com.sf.bigscreen.service.IDayAmService;
 import com.sf.bigscreen.utils.GetEnergyPlatformTokenUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +24,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
+import sun.util.locale.provider.LocaleServiceProviderPool;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
@@ -52,7 +55,7 @@ public class DayAmSchedule implements SchedulingConfigurer {
         scheduledTaskRegistrar.addTriggerTask(executeSchedule(),
                 triggerContext -> {
             //2.1 从数据库获取执行周期
-            String cron = iTableConfigMapper.selectById(1).getCron();
+            String cron = iTableConfigMapper.selectOne(new LambdaQueryWrapper<TableConfig>().eq(TableConfig::getTableName,"dayam").eq(TableConfig::getInfoStyle,"All")).getCron();;
             //2.2 合法性校验.
             if (StringUtils.isEmpty(cron)) {
                 // Omitted Code ..
@@ -66,8 +69,8 @@ public class DayAmSchedule implements SchedulingConfigurer {
         return new Runnable() {
             @Override
             public void run() {
-                Integer integer = iDayAmService.addOrUpdateDayAmAllInfo();
-//                System.out.println("111");
+//                Integer integer = iDayAmService.addOrUpdateDayAmAllInfo();
+//                log.info("执行电表数据整合任务"+new Date());
             }
         };
     }

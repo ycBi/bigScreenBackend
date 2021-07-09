@@ -44,8 +44,12 @@ public class WebConfiguration implements WebMvcConfigurer {
 //        excludePath.add("/router/updateRoutes");
 //        excludePath.add("/user/getUserInfo");
 //        excludePath.add("/router/getList");
-        excludePath.add("/dayAm/updateDayAm");
+        excludePath.add("/dayAm/updateDayAmAll");
         excludePath.add("/dayWa/updateDayWa");
+        excludePath.add("/dayAm/updateDayAmArea");
+        excludePath.add("/dayAm/updateDayAmArc");
+        excludePath.add("/dayAm/updateDayAmPart");
+        excludePath.add("/dayAm/updateDayAmMeter");
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
 
