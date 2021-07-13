@@ -50,6 +50,8 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/dayAm/updateDayAmArc");
         excludePath.add("/dayAm/updateDayAmPart");
         excludePath.add("/dayAm/updateDayAmMeter");
+        excludePath.add("/dayWeather/getWeatherInfo");
+        excludePath.add("/dayWeather/getLocationCode");
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
 

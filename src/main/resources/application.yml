@@ -65,5 +65,12 @@ mybatis-plus:
 #      #逻辑未删除值,(逻辑删除下有效)
 #      logic-delete-value: 1
 
+# 能源监管平台地址（获取电、水的信息）
 third:
   url: http://192.168.7.219:9000
+
+# 和风天气api的public key和url
+weather:
+  key: 8b361d6c39094c24a8a25b7f6f461670
+  url: https://devapi.qweather.com/v7/weather/now
+  location: 101200101
