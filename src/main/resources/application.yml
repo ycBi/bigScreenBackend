@@ -5,7 +5,7 @@ spring:
     name: bigScreen
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.7.151:3306/datascreen?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.7.151:3306/water_balance_big_screen?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
     username: root
     password: sa123456
     type: com.alibaba.druid.pool.DruidDataSource
@@ -67,7 +67,8 @@ mybatis-plus:
 
 # 能源监管平台地址（获取电、水的信息）
 third:
-  url: http://192.168.7.219:9000
+  url: http://192.168.7.219:9102/waterBalance
+  url2: http://192.168.7.219:9000
 
 # 和风天气api的public key和url
 weather:

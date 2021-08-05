@@ -10,3 +10,4 @@ import com.sf.bigscreen.model.Router;
  **/
 public interface IRouterMapper extends BaseMapper<Router> {
 }
+
