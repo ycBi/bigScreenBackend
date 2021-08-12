@@ -39,21 +39,22 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry){
         List<String> excludePath = new ArrayList<>();
         //排除拦截，除了注册登录(此时还没token)，其他都拦截
+        excludePath.add("/**/**");
 //        excludePath.add("/user/register");  //登录
-        excludePath.add("/user/login");     //注册
+//        excludePath.add("/user/login");     //注册
 //        excludePath.add("/router/updateRoutes");
 //        excludePath.add("/user/getUserInfo");
 //        excludePath.add("/router/getList");
-        excludePath.add("/dayAm/updateDayAmAll");
-        excludePath.add("/dayWa/updateDayWa");
-        excludePath.add("/dayAm/updateDayAmArea");
-        excludePath.add("/dayAm/updateDayAmArc");
-        excludePath.add("/dayAm/updateDayAmPart");
-        excludePath.add("/dayAm/updateDayAmMeter");
-        excludePath.add("/dayWeather/getWeatherInfo");
-        excludePath.add("/dayWeather/getLocationCode");
-        excludePath.add("/static/**");  //静态资源
-        excludePath.add("/assets/**");  //静态资源
+//        excludePath.add("/dayAm/updateDayAmAll");
+//        excludePath.add("/dayWa/updateDayWa");
+//        excludePath.add("/dayAm/updateDayAmArea");
+//        excludePath.add("/dayAm/updateDayAmArc");
+//        excludePath.add("/dayAm/updateDayAmPart");
+//        excludePath.add("/dayAm/updateDayAmMeter");
+//        excludePath.add("/dayWeather/getWeatherInfo");
+//        excludePath.add("/dayWeather/getLocationCode");
+//        excludePath.add("/static/**");  //静态资源
+//        excludePath.add("/assets/**");  //静态资源
 
         registry.addInterceptor(tokenInterceptor)
                 .addPathPatterns("/**")
