@@ -27,7 +27,7 @@ public class BaseEntity<T extends Model<?>> extends Model<T> implements Serializ
     protected Date gmtCreate;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField("gmt_modify")
+    @TableField("gmt_modified")
     protected Date gmtModify;
 }
 

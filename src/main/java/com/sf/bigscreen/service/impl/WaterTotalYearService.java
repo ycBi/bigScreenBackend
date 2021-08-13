@@ -34,7 +34,7 @@ public class WaterTotalYearService extends ServiceImpl<WaterTotalYearMapper, Wat
      */
     @Override
     public void insertWaterYearInfo() {
-        String finalUrl = new StringBuilder(baseThirdUrl).append("/area/getAreaDayGrossByMonth").toString();
+        String finalUrl = new StringBuilder(baseThirdUrl).append("/area/getAreaMonthGross").toString();
         String body = HttpRequest.get(finalUrl).execute().body();
         JSONArray jsonArray = JSONUtil.parseArray(body);
         for (Object o : jsonArray) {
