@@ -19,7 +19,7 @@ import java.util.Date;
 public class BaseEntity<T extends Model<?>> extends Model<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id",type = IdType.AUTO)
     protected Long id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

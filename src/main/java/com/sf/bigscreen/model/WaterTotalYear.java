@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import javafx.scene.chart.ValueAxis;
 import lombok.Data;
@@ -18,14 +19,15 @@ import java.util.Date;
  **/
 @Data
 @TableName("water_total_year")
-public class WaterTotalYear implements Serializable {
+public class WaterTotalYear extends BaseEntity {
 
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+    @ApiModelProperty("年")
+    @TableField("year")
+    private Integer year;
 
-    @TableField("date")
-    @ApiModelProperty("日期")
-    private Date date;
+    @ApiModelProperty("月")
+    @TableField("month")
+    private Integer month;
 
     @TableField("total")
     @ApiModelProperty("总量")

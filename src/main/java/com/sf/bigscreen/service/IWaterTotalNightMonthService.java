@@ -9,4 +9,8 @@ import com.sf.bigscreen.model.WaterTotalNightMonth;
  * @Description:
  **/
 public interface IWaterTotalNightMonthService extends IService<WaterTotalNightMonth> {
+    /**
+     * 往waterTotalNightMonthInfo表中插入信息
+     */
+    void insertWaterNightMonthInfo();
 }

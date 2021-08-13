@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.models.auth.In;
 import lombok.Data;
@@ -17,9 +18,7 @@ import java.io.Serializable;
  **/
 @Data
 @TableName("leakage_rate_control")
-public class LeakageRateControl implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class LeakageRateControl extends BaseEntity {
 
     @TableField("water_balance_rate")
     @ApiModelProperty("用水平衡率")

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -18,9 +19,7 @@ import java.util.Date;
  **/
 @Data
 @TableName("alarm")
-public class Alarm implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class Alarm extends BaseEntity {
 
     @TableField("alarm_name")
     @ApiModelProperty("报警名称")

@@ -9,4 +9,8 @@ import com.sf.bigscreen.model.WaterTotalYear;
  * @Description:
  **/
 public interface IWaterTotalYearService extends IService<WaterTotalYear> {
+    /**
+     * 往waterYearInfo表中插入信息
+     */
+    void insertWaterYearInfo();
 }

@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -22,10 +23,7 @@ import java.io.Serializable;
  **/
 @Data
 @TableName("area")
-public class Area implements Serializable {
-
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class Area extends BaseEntity {
 
     @ApiModelProperty("区域id")
     @TableField("area_id")

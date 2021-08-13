@@ -17,7 +17,7 @@ import java.io.Serializable;
  **/
 @Data
 @TableName("router")
-public class Router extends BaseEntity implements Serializable {
+public class Router extends BaseEntity {
 
     @TableField("role")
     @ApiModelProperty("角色")

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.lettuce.core.output.DoubleOutput;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,9 +19,7 @@ import java.util.Date;
  **/
 @Data
 @TableName("water_type")
-public class WaterType implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class WaterType extends BaseEntity {
 
     @TableField("water_use_properties")
     @ApiModelProperty("日期")

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -17,9 +18,7 @@ import java.util.Date;
  **/
 @Data
 @TableName("water_total_hour")
-public class WaterTotalHour implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class WaterTotalHour extends BaseEntity {
 
     @TableField("date")
     @ApiModelProperty("日期")

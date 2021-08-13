@@ -15,7 +15,7 @@ import java.io.Serializable;
  **/
 @Data
 @TableName("user")
-public class User extends BaseEntity implements Serializable {
+public class User extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     @TableField(value = "username")

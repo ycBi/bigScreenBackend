@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -16,9 +17,7 @@ import java.io.Serializable;
  **/
 @Data
 @TableName("meter")
-public class Meter implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class Meter extends BaseEntity {
 
     @TableField("meter_name")
     @ApiModelProperty("电表")

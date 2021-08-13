@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.models.auth.In;
 import lombok.Data;
@@ -19,9 +20,7 @@ import java.util.Date;
  **/
 @Data
 @TableName("area_night_min_flow_monitor")
-public class AreaNightMinFlowMonitor implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class AreaNightMinFlowMonitor extends BaseEntity {
 
     @TableField("area_id")
     @ApiModelProperty("区域id")

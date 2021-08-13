@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sf.bigscreen.entity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -17,9 +18,7 @@ import java.io.Serializable;
  **/
 @Data
 @TableName("task")
-public class Task implements Serializable {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+public class Task extends BaseEntity {
 
     @TableField("task_name")
     @ApiModelProperty("任务名称")
